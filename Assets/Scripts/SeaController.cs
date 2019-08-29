@@ -72,7 +72,7 @@ public class SeaController : MonoBehaviour
         positions[0].gameObject.GetComponent<SpriteRenderer>().enabled = false;
         positions[1].gameObject.GetComponent<SpriteRenderer>().enabled = false;
         positions[2].gameObject.GetComponent<SpriteRenderer>().enabled = false;
-        ScoreController.scoreValue = 0;
+        //GameManager.scoreValue = 0;
         index = -1;
     }
 

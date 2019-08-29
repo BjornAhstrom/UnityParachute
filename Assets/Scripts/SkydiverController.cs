@@ -5,7 +5,7 @@ using UnityEngine;
 public class SkydiverController : MonoBehaviour
 {
     [SerializeField]
-    public List<Transform> positions = new List<Transform>();
+    private List<Transform> positions = new List<Transform>();
 
     public int currentPosition = 0;
     private float nextUpdate;
@@ -33,7 +33,7 @@ public class SkydiverController : MonoBehaviour
 
         if (currentPosition >= positions.Count)
         {
-            GameObject parent = transform.parent.gameObject;
+            //DestroySkydiver();
         } else
         {
             transform.position = positions[currentPosition].position;
@@ -49,13 +49,22 @@ public class SkydiverController : MonoBehaviour
         if (collision.gameObject.name.Equals("Boat"))
         {
             Debug.Log("Boat");
-            ScoreController.scoreValue++;
+            //GameManager.scoreValue++;
             currentPosition = 0;
+            DestroySkydiver();
         } else if (collision.gameObject.name.Equals("Water"))
         { 
             Debug.Log("Sea");
             currentPosition = 0;
+            DestroySkydiver();
         }
+    }
+
+    void DestroySkydiver()
+    {
+        GameObject parent = transform.gameObject;
+
+        Destroy(parent);
     }
 
     //private bool TheParachuteMustBeVisible(bool visible)

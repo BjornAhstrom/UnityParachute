@@ -174,7 +174,6 @@ MonoBehaviour:
   - {fileID: 3493694052436041157}
   - {fileID: 3493694052257889803}
   currentPosition: 0
-  timeSpeed: 0.2
 --- !u!61 &3493694050952167123
 BoxCollider2D:
   m_ObjectHideFlags: 0

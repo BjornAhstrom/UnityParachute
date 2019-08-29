@@ -4,7 +4,15 @@ using UnityEngine;
 
 public class JoystickButtonInput : MonoBehaviour
 {
-    public bool leftBtn;
+    
+    public enum Button
+    {
+        left,
+        right
+    }
+
+    public Button button;
+    //public bool leftBtn;
 
     public delegate void ButtonPressed();
     public static event ButtonPressed LeftButton;
@@ -14,13 +22,13 @@ public class JoystickButtonInput : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if (LeftButton != null && leftBtn)
+        if (LeftButton != null && button == Button.left)
         {
             Debug.Log("Left press");
             LeftButton();
             //boatController.OnLeftButtonPressed();
         }
-        else if (RightButton != null)
+        else if (RightButton != null && button == Button.right)
         {
             Debug.Log("Right press");
             RightButton();

@@ -3,15 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ScoreController : MonoBehaviour
+public class GameManager : MonoBehaviour
 {
-    //public static int scoreValue = 0;
-    //Text score;
+    public static int scoreValue = 0;
+    Text score;
 
     // Start is called before the first frame update
     void Start()
     {
-        //score = GetComponent<Text>();
+        score = GetComponent<Text>();
 
     }
 
