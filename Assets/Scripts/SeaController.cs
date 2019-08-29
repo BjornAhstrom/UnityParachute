@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class SeaController : MonoBehaviour
 {
     public List<Transform> positions = new List<Transform>();
-    public SkydiverController skydiver;
+    //public SkydiverController skydiver;
     private int index = -1;
     private float nextUpdate = 0.0f;
     public float timeSpeed = 1.0f;
@@ -29,11 +29,13 @@ public class SeaController : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
 
     {
-        Debug.Log("Water hit" + collision.name);
-        MissBoat();
+
+
+        //Debug.Log("Water hit" + collision.gameObject.name);
+       // MissBoat();
         index++;
         
-        skydiver.currentPosition = 0;
+        //skydiver.currentPosition = 0;
         Debug.Log("Index " + index);
         
     }

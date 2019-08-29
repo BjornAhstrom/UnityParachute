@@ -5,7 +5,7 @@ using UnityEngine;
 public class BoatController : MonoBehaviour
 {
     public List<Transform> positions = new List<Transform>();
-    public SkydiverController skydiver;
+    //public SkydiverController skydiver;
 
     public static int currentBoatPosition = 1;
 
@@ -52,11 +52,18 @@ public class BoatController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("Boat collision");
-        ScoreController.scoreValue++;
-        skydiver.currentPosition = 0;
-        GameObject parent = skydiver.transform.parent.gameObject;
+        //ScoreController.scoreValue++;
+        //skydiver.currentPosition = 0;
+        //if (skydiver.currentPosition >= skydiver.positions.Count)
+        //{
+        //    GameObject parent = skydiver.transform.parent.gameObject;
 
-       // Destroy(parent);
+        //    Destroy(parent);
+        //}
+        //else
+        //{
+        //    skydiver.currentPosition = 0;
+        //}
+
     }
 }
