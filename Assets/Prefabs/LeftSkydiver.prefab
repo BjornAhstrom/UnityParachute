@@ -651,7 +651,9 @@ MonoBehaviour:
   - {fileID: 1778032898}
   - {fileID: 1357846615}
   - {fileID: 733626740}
-  currentPosition: 0
+  parachutistSpawner: {fileID: 0}
+  gameManager: {fileID: 0}
+  timeSpeed: 1
 --- !u!61 &3493694050952167123
 BoxCollider2D:
   m_ObjectHideFlags: 0

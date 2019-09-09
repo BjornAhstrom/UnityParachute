@@ -13,8 +13,6 @@ public class SeaController : MonoBehaviour
 
     private void Start()
     {
-        
-        //RestartGame();
     }
 
     private void Update()

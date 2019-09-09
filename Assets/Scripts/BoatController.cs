@@ -49,21 +49,4 @@ public class BoatController : MonoBehaviour
     {
         transform.position = positions[currentBoatPosition].position;
     }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        //ScoreController.scoreValue++;
-        //skydiver.currentPosition = 0;
-        //if (skydiver.currentPosition >= skydiver.positions.Count)
-        //{
-        //    GameObject parent = skydiver.transform.parent.gameObject;
-
-        //    Destroy(parent);
-        //}
-        //else
-        //{
-        //    skydiver.currentPosition = 0;
-        //}
-
-    }
 }

@@ -13,6 +13,7 @@ public class ParachutistController : MonoBehaviour
 
     [HideInInspector]
     public ParachutistSpawnerController parachutistSpawner;
+    public GameManager gameManager;
 
     private int currentPosition = 0;
     private float nextUpdate;
@@ -25,6 +26,7 @@ public class ParachutistController : MonoBehaviour
 
     private void Start()
     {
+        //gameManager = GetComponent<GameManager>();
         nextUpdate = Time.time;
         
         random = Random.Range(randomRangeMin, randomRangeMax);
@@ -78,12 +80,13 @@ public class ParachutistController : MonoBehaviour
         if (collision.gameObject.name.Equals("Boat"))
         {
             Debug.Log("Boat");
-            //GameManager.scoreValue++;
+            gameManager.scoreValue++;
             currentPosition = 0;
             DestroySkydiver();
         } else if (collision.gameObject.name.Equals("Water"))
         { 
             Debug.Log("Sea");
+            gameManager.sharkIndex++;
             currentPosition = 0;
             DestroySkydiver();
         }
