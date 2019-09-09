@@ -1,23 +1,20 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
-    public static int scoreValue = 0;
-    Text score;
+    [SerializeField]
+    ParachutistController parachutistController;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        score = GetComponent<Text>();
+    [SerializeField]
+    TextMeshPro scoreText;
+    [SerializeField]
+    TextMeshPro missText;
+    [SerializeField]
+    TextMeshPro gameOverText;
 
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        //score.text = "" + scoreValue;
-    }
+
 }
