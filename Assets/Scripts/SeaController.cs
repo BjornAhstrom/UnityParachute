@@ -65,13 +65,13 @@ public class SeaController : MonoBehaviour
         }
     }
 
-    private void RestartGame()
-    {
-        positions[0].gameObject.GetComponent<SpriteRenderer>().enabled = false;
-        positions[1].gameObject.GetComponent<SpriteRenderer>().enabled = false;
-        positions[2].gameObject.GetComponent<SpriteRenderer>().enabled = false;
-        //GameManager.scoreValue = 0;
-        index = -1;
-    }
+    //private void RestartGame()
+    //{
+    //    positions[0].gameObject.GetComponent<SpriteRenderer>().enabled = false;
+    //    positions[1].gameObject.GetComponent<SpriteRenderer>().enabled = false;
+    //    positions[2].gameObject.GetComponent<SpriteRenderer>().enabled = false;
+    //    //GameManager.scoreValue = 0;
+    //    index = -1;
+    //}
 
 }

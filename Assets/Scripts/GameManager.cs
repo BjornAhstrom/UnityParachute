@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField]
     ParachutistController parachutistController;
+    private ParachutistSpawnerController parachutistSpawnerController;
     [SerializeField]
     List<GameObject> missSharkPositions = new List<GameObject>();
 
@@ -19,12 +20,12 @@ public class GameManager : MonoBehaviour
 
     [HideInInspector]
     public int scoreValue;
-    [HideInInspector]
-    public int sharkIndex = - 1;
+    //[HideInInspector]
+    public int sharkIndex = -1;
 
     private void Start()
     {
-        
+        parachutistSpawnerController = GetComponent<ParachutistSpawnerController>();
     }
 
     private void Update()
@@ -39,15 +40,23 @@ public class GameManager : MonoBehaviour
         scoreText.text = score.ToString();
     }
 
+    // Tar emot ett index när parachutist träffar vattnet som räknas wom en miss och visar upp en haj
     public void ShowOrHideTheSharkWhenMissedTheBoat()
     {
+        Debug.Log("Miss Shark " + sharkIndex);
+        //TODO: Kolla varför den första hajen vissas
+
+        missText.text = "Miss";
+
         if (sharkIndex >= missSharkPositions.Count)
         {
+            parachutistSpawnerController.Stop();
             gameOverText.text = "Game Over";
         }
         else
         {
             missSharkPositions[sharkIndex].SetActive(true);
+            
         }
             
     }

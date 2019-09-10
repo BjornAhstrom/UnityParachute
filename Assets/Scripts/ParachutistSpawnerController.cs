@@ -65,7 +65,7 @@ public class ParachutistSpawnerController : MonoBehaviour
         Destroy(parach);
     }
 
-    void Stop()
+    public void Stop()
     {
         stop = true;
 

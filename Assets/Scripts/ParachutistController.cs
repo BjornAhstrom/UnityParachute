@@ -49,7 +49,7 @@ public class ParachutistController : MonoBehaviour
 
         if (currentPosition >= pos.Count)
         {
-            DestroySkydiver();
+            DestroyParachutist();
         }
         else
         {
@@ -75,24 +75,23 @@ public class ParachutistController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        
-
         if (collision.gameObject.name.Equals("Boat"))
         {
             Debug.Log("Boat");
             gameManager.scoreValue++;
             currentPosition = 0;
-            DestroySkydiver();
+            DestroyParachutist();
         } else if (collision.gameObject.name.Equals("Water"))
         { 
             Debug.Log("Sea");
             gameManager.sharkIndex++;
             currentPosition = 0;
-            DestroySkydiver();
+            DestroyParachutist();
         }
     }
 
-    void DestroySkydiver()
+    // Förstör Parachutist objectet
+    void DestroyParachutist()
     {
         GameObject parachutist = transform.gameObject;
 
