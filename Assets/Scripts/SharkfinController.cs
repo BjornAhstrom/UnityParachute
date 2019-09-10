@@ -5,7 +5,8 @@ using UnityEngine;
 public class SharkfinController : MonoBehaviour
 {
     [SerializeField]
-    private List<GameObject> positions = new List<GameObject>();
+    private List<GameObject> sharkFinPositions = new List<GameObject>();
+
     [SerializeField]
     GameManager gameManager;
 
@@ -14,34 +15,32 @@ public class SharkfinController : MonoBehaviour
 
     private void Start()
     {
-        StartCoroutine(ActivateSharkfin());
+        StartCoroutine(ActivateAndDeactivateSharkfin());
     }
 
-    IEnumerator ActivateSharkfin()
+    IEnumerator ActivateAndDeactivateSharkfin()
     {
-        yield return new WaitForSeconds(gameManager.startWaitSecondsForSharkfinToShowUpOrHide);
+        yield return new WaitForSeconds(gameManager.startWaitSecondsForSharkFinToShowUpOrHide);
         
         while (true)
         {
-            random = Random.Range(randomMin, positions.Count);
+            random = Random.Range(randomMin, sharkFinPositions.Count);
 
-            yield return new WaitForSeconds(gameManager.waitSecondsForSharkfinToShowUpOrHide);
-            ShowRandomSharkfinInWater(random);
+            yield return new WaitForSeconds(gameManager.waitSecondsForSharkFinToShowUpOrHide);
+            ShowRandomSharkFinInWater(random);
 
-            yield return new WaitForSeconds(gameManager.waitSecondsForSharkfinToShowUpOrHide);
-            HideRandomSharkfinInWater(random);
-            //StartCoroutine(DeactivateSharkfin(rand));
+            yield return new WaitForSeconds(gameManager.waitSecondsForSharkFinToShowUpOrHide);
+            HideRandomSharkFinInWater(random);
         }
     }
 
-
-    void ShowRandomSharkfinInWater(int rand)
+    void ShowRandomSharkFinInWater(int rand)
     {
-        positions[rand].SetActive(true);
+        sharkFinPositions[rand].SetActive(true);
     }
 
-    void HideRandomSharkfinInWater(int rand)
+    void HideRandomSharkFinInWater(int rand)
     {
-        positions[rand].SetActive(false);
+        sharkFinPositions[rand].SetActive(false);
     }
 }

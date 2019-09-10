@@ -5,10 +5,23 @@ using TMPro;
 
 public class GameManager : MonoBehaviour
 {
+    // SharkfinController
+    [Range(0, 10)]
+    public float startWaitSecondsForSharkFinToShowUpOrHide = 2.0f;
+    [Range(0, 5)]
+    public float waitSecondsForSharkFinToShowUpOrHide = 1.0f;
+
+    // ParachutistSpawnController
+    [Range(0, 5)]
+    public float spawnDelay = 3.0f;
+    [Range(0, 2)]
+    public float randomSpawning = 0.5f;
+    [Range(0, 2)]
+    public float changesTheSpeedOfManufactureOfClones = 0.98f;
+
     [SerializeField]
     ParachutistController parachutistController;
-    //[SerializeField]
-    //SharkfinController sharkfinController;
+
     private ParachutistSpawnerController parachutistSpawnerController;
     [SerializeField]
     List<GameObject> missSharkPositions = new List<GameObject>();
@@ -19,20 +32,6 @@ public class GameManager : MonoBehaviour
     TextMeshPro missText;
     [SerializeField]
     TextMeshPro gameOverText;
-
-    // SharkfinController
-    [Range(0, 10)]
-    public float startWaitSecondsForSharkfinToShowUpOrHide = 2.0f;
-    [Range(0, 5)]
-    public float waitSecondsForSharkfinToShowUpOrHide = 1.0f;
-
-    // ParachutistSpawnController
-    [Range(0, 5)]
-    public float spawnDelay = 3.0f;
-    [Range(0, 2)]
-    public float randomSpawning = 0.5f;
-    [Range(0, 2)]
-    public float changesTheSpeedOfManufactureOfClones = 0.98f;
 
     [HideInInspector]
     public int scoreValue;

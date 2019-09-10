@@ -26,7 +26,6 @@ public class ParachutistController : MonoBehaviour
 
     private void Start()
     {
-        //gameManager = GetComponent<GameManager>();
         nextUpdate = Time.time;
         
         random = Random.Range(randomRangeMin, randomRangeMax);
