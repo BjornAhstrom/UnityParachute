@@ -83,7 +83,7 @@ public class ParachutistController : MonoBehaviour
         } else if (collision.gameObject.name.Equals("Water"))
         { 
             Debug.Log("Sea");
-            gameManager.sharkIndex++;
+            gameManager.ShowOrHideTheSharkWhenMissedTheBoat();
             currentPosition = 0;
             DestroyParachutist();
         }

@@ -20,7 +20,9 @@ public class GameManager : MonoBehaviour
     public float changesTheSpeedOfManufactureOfClones = 0.98f;
 
     [SerializeField]
-    ParachutistController parachutistController;
+    SharkfinController sharkfinController;
+    [SerializeField]
+    SharkInWaterController sharkInWaterController;
 
     private ParachutistSpawnerController parachutistSpawnerController;
     [SerializeField]
@@ -36,7 +38,7 @@ public class GameManager : MonoBehaviour
     [HideInInspector]
     public int scoreValue;
     //[HideInInspector]
-    public int sharkIndex = -1;
+    private int sharkIndex = -1;
 
     private void Start()
     {
@@ -46,7 +48,7 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         IncreaseScore(scoreValue);
-        ShowOrHideTheSharkWhenMissedTheBoat();
+        //ShowOrHideTheSharkWhenMissedTheBoat();
     }
 
     // Tar in poäng från parachutistController och skriver ut poäng till scoreText
@@ -59,21 +61,25 @@ public class GameManager : MonoBehaviour
     // och när det blir game over då försvinner alla parachutist från skärmen
     public void ShowOrHideTheSharkWhenMissedTheBoat()
     {
-       //Debug.Log("Miss Shark " + sharkIndex);
-        //TODO: Kolla varför den första hajen vissas
-
-        missText.text = "Miss";
+        sharkIndex++;
 
         if (sharkIndex >= missSharkPositions.Count)
         {
-            parachutistSpawnerController.Stop();
+            StopGame();
             gameOverText.text = "Game Over";
         }
-        else
+        else 
         {
             missSharkPositions[sharkIndex].SetActive(true);
-            
-        }
-            
+            missText.text = "Miss";
+        } 
+    }
+
+    // Stoppar spelet, hajen och hajfenan som kommer upp ur vattnet
+    void StopGame()
+    {
+        parachutistSpawnerController.Stop();
+        sharkfinController.runSharkFin = false;
+        sharkInWaterController.runShark = false;
     }
 }

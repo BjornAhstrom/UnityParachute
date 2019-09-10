@@ -12,6 +12,9 @@ public class SharkInWaterController : MonoBehaviour
     private int random;
     private int randomMin = 0;
 
+    [HideInInspector]
+    public bool runShark = true;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -20,16 +23,16 @@ public class SharkInWaterController : MonoBehaviour
 
     IEnumerator ActivateOrDeactivateSharkInWater()
     {
-        yield return new WaitForSeconds(5);
-
-        while (true)
+        while (runShark)
         {
+            yield return new WaitForSeconds(5.3f);
+
             random = Random.Range(randomMin, sharkPositions.Count);
 
-            yield return new WaitForSeconds(1);
+            yield return new WaitForSeconds(1.0f);
             ShowShark(random);
 
-            yield return new WaitForSeconds(1);
+            yield return new WaitForSeconds(1.0f);
             HideShark(random);
         }
     }

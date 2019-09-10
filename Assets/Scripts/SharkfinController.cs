@@ -13,6 +13,9 @@ public class SharkfinController : MonoBehaviour
     private int random;
     private int randomMin = 0;
 
+    [HideInInspector]
+    public bool runSharkFin = true;
+
     private void Start()
     {
         StartCoroutine(ActivateAndDeactivateSharkfin());
@@ -20,10 +23,10 @@ public class SharkfinController : MonoBehaviour
 
     IEnumerator ActivateAndDeactivateSharkfin()
     {
-        yield return new WaitForSeconds(gameManager.startWaitSecondsForSharkFinToShowUpOrHide);
-        
-        while (true)
+        while (runSharkFin)
         {
+            yield return new WaitForSeconds(gameManager.startWaitSecondsForSharkFinToShowUpOrHide);
+
             random = Random.Range(randomMin, sharkFinPositions.Count);
 
             yield return new WaitForSeconds(gameManager.waitSecondsForSharkFinToShowUpOrHide);
