@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
+using System;
 
 public class GameManager : MonoBehaviour
 {
-    // SharkfinController
     [Range(0, 10)]
     public float startWaitSecondsForSharkFinToShowUpOrHide = 2.0f;
     [Range(0, 5)]
@@ -29,7 +30,7 @@ public class GameManager : MonoBehaviour
     List<GameObject> missSharkPositions = new List<GameObject>();
 
     [SerializeField]
-    TextMeshPro scoreText;
+    TextMeshPro scoreAndClockText;
     [SerializeField]
     TextMeshPro missText;
     [SerializeField]
@@ -37,8 +38,10 @@ public class GameManager : MonoBehaviour
 
     [HideInInspector]
     public int scoreValue;
-    //[HideInInspector]
+
     private int sharkIndex = -1;
+    private int CurrentScore;
+    private bool runClock = false;
 
     private void Start()
     {
@@ -48,13 +51,29 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         IncreaseScore(scoreValue);
-        //ShowOrHideTheSharkWhenMissedTheBoat();
+
+        if (runClock == true)
+        {
+            RunClock();
+        }
+    }
+
+    private void OnEnable()
+    {
+        JoystickButtonInput.GameA += RestartGame;
+        JoystickButtonInput.TimeMenu += ShowTime;
+    }
+
+    private void OnDisable()
+    {
+        JoystickButtonInput.GameA -= RestartGame;
+        JoystickButtonInput.TimeMenu -= ShowTime;
     }
 
     // Tar in poäng från parachutistController och skriver ut poäng till scoreText
     void IncreaseScore(int score)
     {
-        scoreText.text = score.ToString();
+        scoreAndClockText.text = score.ToString();
     }
 
     // Tar emot ett index när parachutist träffar vattnet som räknas som en miss och visar upp en haj
@@ -81,5 +100,31 @@ public class GameManager : MonoBehaviour
         parachutistSpawnerController.Stop();
         sharkfinController.runSharkFin = false;
         sharkInWaterController.runShark = false;
+    }
+
+    public void ShowTime()
+    {
+        runClock = true;
+        StopGame();
+        Debug.Log("Time");
+    }
+
+    public void RestartGame()
+    {
+        SceneManager.LoadScene("SampleScene");
+    }
+
+    void RunClock()
+    {
+        DateTime time = DateTime.Now;
+        string hour = LeadingZero(time.Hour);
+        string minute = LeadingZero(time.Minute);
+        string second = LeadingZero(time.Second);
+        scoreAndClockText.text = hour + ":" + minute + ":" + second;
+    }
+
+    string LeadingZero(int n)
+    {
+        return n.ToString().PadLeft(2, '0');
     }
 }
