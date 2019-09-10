@@ -7,6 +7,8 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField]
     ParachutistController parachutistController;
+    //[SerializeField]
+    //SharkfinController sharkfinController;
     private ParachutistSpawnerController parachutistSpawnerController;
     [SerializeField]
     List<GameObject> missSharkPositions = new List<GameObject>();
@@ -17,6 +19,20 @@ public class GameManager : MonoBehaviour
     TextMeshPro missText;
     [SerializeField]
     TextMeshPro gameOverText;
+
+    // SharkfinController
+    [Range(0, 10)]
+    public float startWaitSecondsForSharkfinToShowUpOrHide = 2.0f;
+    [Range(0, 5)]
+    public float waitSecondsForSharkfinToShowUpOrHide = 1.0f;
+
+    // ParachutistSpawnController
+    [Range(0, 5)]
+    public float spawnDelay = 3.0f;
+    [Range(0, 2)]
+    public float randomSpawning = 0.5f;
+    [Range(0, 2)]
+    public float changesTheSpeedOfManufactureOfClones = 0.98f;
 
     [HideInInspector]
     public int scoreValue;
@@ -40,10 +56,11 @@ public class GameManager : MonoBehaviour
         scoreText.text = score.ToString();
     }
 
-    // Tar emot ett index när parachutist träffar vattnet som räknas wom en miss och visar upp en haj
+    // Tar emot ett index när parachutist träffar vattnet som räknas som en miss och visar upp en haj
+    // och när det blir game over då försvinner alla parachutist från skärmen
     public void ShowOrHideTheSharkWhenMissedTheBoat()
     {
-        Debug.Log("Miss Shark " + sharkIndex);
+       //Debug.Log("Miss Shark " + sharkIndex);
         //TODO: Kolla varför den första hajen vissas
 
         missText.text = "Miss";

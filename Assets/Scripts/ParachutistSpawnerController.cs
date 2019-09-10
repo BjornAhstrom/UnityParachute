@@ -6,27 +6,24 @@ public class ParachutistSpawnerController : MonoBehaviour
 {
     [SerializeField]
     GameObject skydiverSpawnerPrefab;
+    GameManager gameManager;
+
     private List<GameObject> parachutist = new List<GameObject>();
     
     private float lastSpawnTime;
-    
-    [Range(0, 5)]
-    public float spawnDelay = 3.0f;
-    [Range(0, 2)]
-    public float randomSpawning = 0.5f;
-    [Range(0, 2)]
-    public float changesTheSpeedOfManufactureOfClones = 0.98f;
 
     private float randomSpawnDelay;
     private bool stop = false;
 
     private void Start()
     {
+        gameManager = GetComponent<GameManager>();
+
         if (skydiverSpawnerPrefab == null)
         {
             return;
         }
-        randomSpawnDelay = spawnDelay;
+        randomSpawnDelay = gameManager.spawnDelay;
         SpawnParachutist();
     }
 
@@ -43,8 +40,8 @@ public class ParachutistSpawnerController : MonoBehaviour
         lastSpawnTime = Time.time;
 
         // Ökar eller sänker hastigheten av tillverkning av cloner
-        lastSpawnTime *= changesTheSpeedOfManufactureOfClones; 
-        randomSpawnDelay = Random.Range(spawnDelay - randomSpawning, spawnDelay + randomSpawning);
+        lastSpawnTime *= gameManager.changesTheSpeedOfManufactureOfClones; 
+        randomSpawnDelay = Random.Range(gameManager.spawnDelay - gameManager.randomSpawning, gameManager.spawnDelay + gameManager.randomSpawning);
 
         // Skapar Parachutist clone
         GameObject parachute =  Instantiate(skydiverSpawnerPrefab);
