@@ -14,6 +14,7 @@ public class ParachutistController : MonoBehaviour
     [HideInInspector]
     public ParachutistSpawnerController parachutistSpawner;
     public GameManager gameManager;
+    public SoundController soundController;
 
     private int currentPosition = 0;
     private float nextUpdate;
@@ -53,6 +54,7 @@ public class ParachutistController : MonoBehaviour
         else
         {
             transform.position = pos[currentPosition].position;
+            soundController.SoundWhenParachutistCommingDown();
         }
 }
 
@@ -83,6 +85,7 @@ public class ParachutistController : MonoBehaviour
         } else if (collision.gameObject.name.Equals("Water"))
         { 
             Debug.Log("Sea");
+            soundController.soundWhwnParachutistHitWater();
             gameManager.ShowOrHideTheSharkWhenMissedTheBoat();
             currentPosition = 0;
             DestroyParachutist();

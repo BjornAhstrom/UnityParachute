@@ -81,10 +81,12 @@ public class JoystickButtonInput : MonoBehaviour
                 else if (GameA != null && hit.collider != null && hit.collider.tag == "GameAButton")
                 {
                     Debug.Log("Game A");
+                    GameA();
                 }
                 else if (TimeMenu != null && hit.collider != null && hit.collider.tag == "TimeMenuButton")
                 {
                     Debug.Log("Time Menu");
+                    TimeMenu();
                 }
             }
         }

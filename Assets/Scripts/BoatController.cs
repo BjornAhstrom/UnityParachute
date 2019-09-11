@@ -5,6 +5,7 @@ using UnityEngine;
 public class BoatController : MonoBehaviour
 {
     public List<Transform> positions = new List<Transform>();
+    //public List<GameObject> boatPositions = new List<GameObject>();
     //public SkydiverController skydiver;
 
     public static int currentBoatPosition = 1;
@@ -12,7 +13,9 @@ public class BoatController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        UpdateBoatPosition();
+        //UpdateBoatPosition();
+        //MoveBoat(currentBoatPosition);
+        //boatPositions[1].SetActive(true);
     }
 
     private void OnEnable()
@@ -32,6 +35,7 @@ public class BoatController : MonoBehaviour
         if (currentBoatPosition > 0)
         {
             currentBoatPosition--;
+            //MoveBoat(currentBoatPosition);
             UpdateBoatPosition();
         }
     }
@@ -41,9 +45,38 @@ public class BoatController : MonoBehaviour
         if (currentBoatPosition < positions.Count - 1)
         {
             currentBoatPosition++;
+           // MoveBoat(currentBoatPosition);
             UpdateBoatPosition();
         }
     }
+
+    //void MoveBoat(int pos)
+    //{
+    //    if (pos == 0)
+    //    {
+    //        boatPositions[0].SetActive(true);
+    //    }
+    //    else
+    //    {
+    //        boatPositions[0].SetActive(false);
+    //    }
+    //    if (pos == 1)
+    //    {
+    //        boatPositions[1].SetActive(true);
+    //    }
+    //    else
+    //    {
+    //        boatPositions[1].SetActive(false);
+    //    }
+    //    if (pos == 2)
+    //    {
+    //        boatPositions[2].SetActive(true);
+    //    }
+    //    else
+    //    {
+    //        boatPositions[2].SetActive(false);
+    //    }
+    //}
 
     private void UpdateBoatPosition()
     {
